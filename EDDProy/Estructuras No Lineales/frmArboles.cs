@@ -252,5 +252,20 @@ namespace EDDemo.Estructuras_No_Lineales
 
             txtDato.Text = "";
         }
+
+        private void BtRecorrerNiveles_Click(object sender, EventArgs e)
+        {
+            if (miArbol.EstaVacio())
+            {
+                MessageBox.Show("El árbol esta vacio, cree un árbol para recorrerlo", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                miRaiz = miArbol.RegresaRaiz();
+                miArbol.RecorrerPorNiveles(miRaiz);
+                MessageBox.Show("El arbol se ordenó con éxito");
+                txtArbol.Text = miArbol.strRecorrido;
+            }
+        }
     } 
 }

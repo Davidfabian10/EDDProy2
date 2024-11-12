@@ -48,6 +48,7 @@ namespace EDDemo.Estructuras_No_Lineales
             this.BtPodar = new System.Windows.Forms.Button();
             this.BtENSucesor = new System.Windows.Forms.Button();
             this.BtENPredecesor = new System.Windows.Forms.Button();
+            this.BtRecorrerNiveles = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtNodos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,13 +83,13 @@ namespace EDDemo.Estructuras_No_Lineales
             this.txtArbol.Multiline = true;
             this.txtArbol.Name = "txtArbol";
             this.txtArbol.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtArbol.Size = new System.Drawing.Size(509, 301);
+            this.txtArbol.Size = new System.Drawing.Size(696, 420);
             this.txtArbol.TabIndex = 2;
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpiar.Location = new System.Drawing.Point(438, 11);
+            this.btnLimpiar.Location = new System.Drawing.Point(625, 11);
             this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(62, 24);
@@ -100,7 +101,7 @@ namespace EDDemo.Estructuras_No_Lineales
             // btnGrafica
             // 
             this.btnGrafica.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGrafica.Location = new System.Drawing.Point(438, 50);
+            this.btnGrafica.Location = new System.Drawing.Point(625, 50);
             this.btnGrafica.Margin = new System.Windows.Forms.Padding(2);
             this.btnGrafica.Name = "btnGrafica";
             this.btnGrafica.Size = new System.Drawing.Size(62, 24);
@@ -236,9 +237,9 @@ namespace EDDemo.Estructuras_No_Lineales
             this.BtPodar.Location = new System.Drawing.Point(355, 84);
             this.BtPodar.Margin = new System.Windows.Forms.Padding(2);
             this.BtPodar.Name = "BtPodar";
-            this.BtPodar.Size = new System.Drawing.Size(62, 24);
+            this.BtPodar.Size = new System.Drawing.Size(148, 24);
             this.BtPodar.TabIndex = 16;
-            this.BtPodar.Text = "Podar";
+            this.BtPodar.Text = "Podar Arbol";
             this.BtPodar.UseVisualStyleBackColor = true;
             this.BtPodar.Click += new System.EventHandler(this.BtPodar_Click);
             // 
@@ -264,11 +265,23 @@ namespace EDDemo.Estructuras_No_Lineales
             this.BtENPredecesor.UseVisualStyleBackColor = true;
             this.BtENPredecesor.Click += new System.EventHandler(this.BtENPredecesor_Click);
             // 
+            // BtRecorrerNiveles
+            // 
+            this.BtRecorrerNiveles.Location = new System.Drawing.Point(578, 89);
+            this.BtRecorrerNiveles.Margin = new System.Windows.Forms.Padding(2);
+            this.BtRecorrerNiveles.Name = "BtRecorrerNiveles";
+            this.BtRecorrerNiveles.Size = new System.Drawing.Size(62, 24);
+            this.BtRecorrerNiveles.TabIndex = 19;
+            this.BtRecorrerNiveles.Text = "Recorrer";
+            this.BtRecorrerNiveles.UseVisualStyleBackColor = true;
+            this.BtRecorrerNiveles.Click += new System.EventHandler(this.BtRecorrerNiveles_Click);
+            // 
             // frmArboles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 389);
+            this.ClientSize = new System.Drawing.Size(701, 508);
+            this.Controls.Add(this.BtRecorrerNiveles);
             this.Controls.Add(this.BtENPredecesor);
             this.Controls.Add(this.BtENSucesor);
             this.Controls.Add(this.BtPodar);
@@ -318,5 +331,6 @@ namespace EDDemo.Estructuras_No_Lineales
         private System.Windows.Forms.Button BtPodar;
         private System.Windows.Forms.Button BtENSucesor;
         private System.Windows.Forms.Button BtENPredecesor;
+        private System.Windows.Forms.Button BtRecorrerNiveles;
     }
 }

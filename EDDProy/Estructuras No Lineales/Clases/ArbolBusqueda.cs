@@ -200,5 +200,39 @@ namespace EDDemo.Estructuras_No_Lineales
             }
             return nodo;
         }
+
+        public void RecorrerPorNiveles(NodoBinario nodo)
+        {
+            if (nodo == null)
+            {
+                strRecorrido = "El árbol está vacío";
+                return;
+            }
+
+            // Inicializar una cola para manejar el recorrido por niveles
+            Queue<NodoBinario> cola = new Queue<NodoBinario>();
+            cola.Enqueue(nodo); // Empezar con la raíz
+
+            strRecorrido = ""; // Limpiar la cadena de recorrido antes de comenzar
+
+            while (cola.Count > 0)
+            {
+                // Sacar el nodo al frente de la cola
+                NodoBinario actual = cola.Dequeue();
+
+                // Agregar el valor del nodo actual a la cadena de recorrido
+                strRecorrido += actual.Dato + ", ";
+
+                // Agregar los hijos izquierdo y derecho del nodo actual a la cola
+                if (actual.Izq != null)
+                {
+                    cola.Enqueue(actual.Izq);
+                }
+                if (actual.Der != null)
+                {
+                    cola.Enqueue(actual.Der);
+                }
+            }
+        }
     }
 }

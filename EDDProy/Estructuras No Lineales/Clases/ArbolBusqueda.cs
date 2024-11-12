@@ -33,7 +33,7 @@ namespace EDDemo.Estructuras_No_Lineales
         }
 
         public void InsertaNodo(int Dato, ref NodoBinario Nodo)
-        {            
+        {
             if (Nodo == null)
             {
                 Nodo = new NodoBinario(Dato);
@@ -45,14 +45,14 @@ namespace EDDemo.Estructuras_No_Lineales
             else if (Dato < Nodo.Dato)
                 InsertaNodo(Dato, ref Nodo.Izq);
             else if (Dato > Nodo.Dato)
-                InsertaNodo(Dato, ref Nodo.Der);          
+                InsertaNodo(Dato, ref Nodo.Der);
         }
-        public void MuestraArbolAcostado(int nivel, NodoBinario nodo )
+        public void MuestraArbolAcostado(int nivel, NodoBinario nodo)
         {
             if (nodo == null)
                 return;
             MuestraArbolAcostado(nivel + 1, nodo.Der);
-            for(int i=0; i<nivel; i++)
+            for (int i = 0; i < nivel; i++)
             {
                 strArbol = strArbol + "      ";
             }
@@ -60,7 +60,7 @@ namespace EDDemo.Estructuras_No_Lineales
             MuestraArbolAcostado(nivel + 1, nodo.Izq);
         }
 
-        public  String ToDot(NodoBinario nodo)
+        public String ToDot(NodoBinario nodo)
         {
             StringBuilder b = new StringBuilder();
             if (nodo.Izq != null)
@@ -85,7 +85,7 @@ namespace EDDemo.Estructuras_No_Lineales
             strRecorrido = strRecorrido + nodo.Dato + ", ";
             PreOrden(nodo.Izq);
             PreOrden(nodo.Der);
-            
+
             return;
         }
 
@@ -100,7 +100,7 @@ namespace EDDemo.Estructuras_No_Lineales
 
             return;
         }
-        public void PostOrden(NodoBinario nodo )
+        public void PostOrden(NodoBinario nodo)
         {
             if (nodo == null)
                 return;
@@ -110,7 +110,95 @@ namespace EDDemo.Estructuras_No_Lineales
             strRecorrido = strRecorrido + nodo.Dato + ", ";
 
             return;
-         }
+        }
 
+        public void PodarArbol(ref NodoBinario nodo)
+        {
+            if (nodo == null) return;
+            PodarArbol(ref nodo.Izq);
+            PodarArbol(ref nodo.Der);
+            nodo = null;  // Elimina el nodo actual
+        }
+
+        // Llamada para podar todo el árbol desde la raíz
+        public void PodarTodoElArbol()
+        {
+            PodarArbol(ref Raiz);
+            Raiz = null; // Reiniciar la raíz después de la poda
+        }
+
+        public NodoBinario EliminarNodoPredecesor(int valor, ref NodoBinario nodo)
+        {
+            if (nodo == null) return null;
+
+            if (valor < nodo.Dato)
+            {
+                nodo.Izq = EliminarNodoPredecesor(valor, ref nodo.Izq);
+            }
+            else if (valor > nodo.Dato)
+            {
+                nodo.Der = EliminarNodoPredecesor(valor, ref nodo.Der);
+            }
+            else
+            {
+                if (nodo.Izq != null && nodo.Der != null)
+                {
+                    NodoBinario predecesor = EncontrarMaximo(nodo.Izq);
+                    nodo.Dato = predecesor.Dato;
+                    nodo.Izq = EliminarNodoPredecesor(predecesor.Dato, ref nodo.Izq);
+                }
+                else
+                {
+                    nodo = (nodo.Izq != null) ? nodo.Izq : nodo.Der;
+                }
+            }
+            return nodo;
+        }
+
+        public NodoBinario EliminarNodoSucesor(int valor, ref NodoBinario nodo)
+        {
+            if (nodo == null) return null;
+
+            if (valor < nodo.Dato)
+            {
+                nodo.Izq = EliminarNodoSucesor(valor, ref nodo.Izq);
+            }
+            else if (valor > nodo.Dato)
+            {
+                nodo.Der = EliminarNodoSucesor(valor, ref nodo.Der);
+            }
+            else
+            {
+                if (nodo.Izq != null && nodo.Der != null)
+                {
+                    NodoBinario sucesor = EncontrarMinimo(nodo.Der);
+                    nodo.Dato = sucesor.Dato;
+                    nodo.Der = EliminarNodoSucesor(sucesor.Dato, ref nodo.Der);
+                }
+                else
+                {
+                    nodo = (nodo.Izq != null) ? nodo.Izq : nodo.Der;
+                }
+            }
+            return nodo;
+        }
+
+        private NodoBinario EncontrarMaximo(NodoBinario nodo)
+        {
+            while (nodo.Der != null)
+            {
+                nodo = nodo.Der;
+            }
+            return nodo;
+        }
+
+        private NodoBinario EncontrarMinimo(NodoBinario nodo)
+        {
+            while (nodo.Izq != null)
+            {
+                nodo = nodo.Izq;
+            }
+            return nodo;
+        }
     }
 }

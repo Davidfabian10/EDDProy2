@@ -209,5 +209,48 @@ namespace EDDemo.Estructuras_No_Lineales
             else MessageBox.Show("Ingrese un número válido para buscar en el árbol", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
+
+        private void BtPodar_Click(object sender, EventArgs e)
+        {
+            if (miArbol.EstaVacio())
+            {
+                MessageBox.Show("Cree un arbol para podarlo", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else
+            {
+                miArbol.PodarTodoElArbol();
+                MessageBox.Show("El arbol se podo con éxito");
+                txtArbol.Text = "";
+            }
+        }
+
+        private void BtENPredecesor_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtDato.Text, out int valor))
+            {
+                miRaiz = miArbol.EliminarNodoPredecesor(valor, ref miRaiz);
+                miArbol.MuestraArbolAcostado(1, miRaiz);
+                MessageBox.Show("El nodo se eliminó con éxito");
+                txtArbol.Text = miArbol.strArbol;
+            }
+            else MessageBox.Show("Ingresa un valor para eliminarlo", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            txtDato.Text = "";
+        }
+
+        private void BtENSucesor_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtDato.Text, out int valor))
+            {
+                miRaiz = miArbol.EliminarNodoSucesor(valor, ref miRaiz);
+                miArbol.MuestraArbolAcostado(1, miRaiz);
+                MessageBox.Show("El nodo se eliminó con éxito");
+                txtArbol.Text = miArbol.strArbol;
+            }
+            else MessageBox.Show("Ingresa un valor para eliminarlo", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            txtDato.Text = "";
+        }
     }
 }

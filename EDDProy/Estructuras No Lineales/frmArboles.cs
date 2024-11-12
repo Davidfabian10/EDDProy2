@@ -252,5 +252,5 @@ namespace EDDemo.Estructuras_No_Lineales
 
             txtDato.Text = "";
         }
-    }
+    } 
 }

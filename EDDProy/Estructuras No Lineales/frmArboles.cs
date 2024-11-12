@@ -74,7 +74,7 @@ namespace EDDemo.Estructuras_No_Lineales
             miRaiz = miArbol.RegresaRaiz();
             if (miRaiz == null)
             {
-                MessageBox.Show("El arbol esta vacio");
+                MessageBox.Show("Cree un arbol para graficarlo", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -265,6 +265,20 @@ namespace EDDemo.Estructuras_No_Lineales
                 miArbol.RecorrerPorNiveles(miRaiz);
                 MessageBox.Show("El arbol se ordenó con éxito");
                 txtArbol.Text = miArbol.strRecorrido;
+            }
+        }
+
+        private void BtAltura_Click(object sender, EventArgs e)
+        {
+            if (miArbol.EstaVacio())
+            {
+                MessageBox.Show("El árbol esta vacio, cree un árbol para calcular su altura", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                miRaiz = miArbol.RegresaRaiz();
+                int altura = miArbol.ObtenerAltura(miRaiz);
+                MessageBox.Show("La altura del árbol es: " + altura, "Altura del Árbol");
             }
         }
     } 

@@ -234,5 +234,18 @@ namespace EDDemo.Estructuras_No_Lineales
                 }
             }
         }
+
+        public int ObtenerAltura(NodoBinario nodo)
+        {
+            if (nodo == null)
+                return -1; // Altura de un árbol vacío es -1
+
+            // Calcular la altura de los subárboles izquierdo y derecho
+            int alturaIzquierda = ObtenerAltura(nodo.Izq);
+            int alturaDerecha = ObtenerAltura(nodo.Der);
+
+            // La altura del nodo actual es 1 más la mayor altura de sus subárboles
+            return 1 + Math.Max(alturaIzquierda, alturaDerecha);
+        }
     }
 }

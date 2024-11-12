@@ -49,6 +49,7 @@ namespace EDDemo.Estructuras_No_Lineales
             this.BtENSucesor = new System.Windows.Forms.Button();
             this.BtENPredecesor = new System.Windows.Forms.Button();
             this.BtRecorrerNiveles = new System.Windows.Forms.Button();
+            this.BtAltura = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtNodos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -267,20 +268,32 @@ namespace EDDemo.Estructuras_No_Lineales
             // 
             // BtRecorrerNiveles
             // 
-            this.BtRecorrerNiveles.Location = new System.Drawing.Point(578, 89);
+            this.BtRecorrerNiveles.Location = new System.Drawing.Point(625, 85);
             this.BtRecorrerNiveles.Margin = new System.Windows.Forms.Padding(2);
             this.BtRecorrerNiveles.Name = "BtRecorrerNiveles";
-            this.BtRecorrerNiveles.Size = new System.Drawing.Size(62, 24);
+            this.BtRecorrerNiveles.Size = new System.Drawing.Size(62, 51);
             this.BtRecorrerNiveles.TabIndex = 19;
-            this.BtRecorrerNiveles.Text = "Recorrer";
+            this.BtRecorrerNiveles.Text = "Recorrer por Niveles";
             this.BtRecorrerNiveles.UseVisualStyleBackColor = true;
             this.BtRecorrerNiveles.Click += new System.EventHandler(this.BtRecorrerNiveles_Click);
+            // 
+            // BtAltura
+            // 
+            this.BtAltura.Location = new System.Drawing.Point(625, 152);
+            this.BtAltura.Margin = new System.Windows.Forms.Padding(2);
+            this.BtAltura.Name = "BtAltura";
+            this.BtAltura.Size = new System.Drawing.Size(62, 24);
+            this.BtAltura.TabIndex = 20;
+            this.BtAltura.Text = "Altura";
+            this.BtAltura.UseVisualStyleBackColor = true;
+            this.BtAltura.Click += new System.EventHandler(this.BtAltura_Click);
             // 
             // frmArboles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 508);
+            this.Controls.Add(this.BtAltura);
             this.Controls.Add(this.BtRecorrerNiveles);
             this.Controls.Add(this.BtENPredecesor);
             this.Controls.Add(this.BtENSucesor);
@@ -332,5 +345,6 @@ namespace EDDemo.Estructuras_No_Lineales
         private System.Windows.Forms.Button BtENSucesor;
         private System.Windows.Forms.Button BtENPredecesor;
         private System.Windows.Forms.Button BtRecorrerNiveles;
+        private System.Windows.Forms.Button BtAltura;
     }
 }

@@ -117,14 +117,13 @@ namespace EDDemo.Estructuras_No_Lineales
             if (nodo == null) return;
             PodarArbol(ref nodo.Izq);
             PodarArbol(ref nodo.Der);
-            nodo = null;  // Elimina el nodo actual
+            nodo = null;
         }
 
-        // Llamada para podar todo el árbol desde la raíz
         public void PodarTodoElArbol()
         {
             PodarArbol(ref Raiz);
-            Raiz = null; // Reiniciar la raíz después de la poda
+            Raiz = null;
         }
 
         public NodoBinario EliminarNodoPredecesor(int valor, ref NodoBinario nodo)

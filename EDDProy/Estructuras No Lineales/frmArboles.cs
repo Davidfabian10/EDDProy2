@@ -281,5 +281,33 @@ namespace EDDemo.Estructuras_No_Lineales
                 MessageBox.Show("La altura del árbol es: " + altura, "Altura del Árbol");
             }
         }
+
+        private void BtHojas_Click(object sender, EventArgs e)
+        {
+            if (miArbol.EstaVacio())
+            {
+                MessageBox.Show("El árbol esta vacio, cree un árbol para contar sus hojas", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                miRaiz = miArbol.RegresaRaiz();
+                int cantidadHojas = miArbol.ContarHojas(miRaiz);
+                MessageBox.Show("La cantidad de hojas en el árbol es: " + cantidadHojas, "Cantidad de Hojas");
+            }
+        }
+
+        private void BtNodos_Click(object sender, EventArgs e)
+        {
+            if (miArbol.EstaVacio())
+            {
+                MessageBox.Show("El árbol esta vacio, cree un árbol para contar sus nodos", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                miRaiz = miArbol.RegresaRaiz();
+                int cantidadNodos = miArbol.ContarNodos(miRaiz);
+                MessageBox.Show("La cantidad total de nodos en el árbol es: " + cantidadNodos, "Cantidad de Nodos");
+            }
+        }
     } 
 }

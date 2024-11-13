@@ -247,5 +247,27 @@ namespace EDDemo.Estructuras_No_Lineales
             // La altura del nodo actual es 1 más la mayor altura de sus subárboles
             return 1 + Math.Max(alturaIzquierda, alturaDerecha);
         }
+
+        public int ContarHojas(NodoBinario nodo)
+        {
+            if (nodo == null)
+                return 0;
+
+            // Si el nodo no tiene hijos, es una hoja
+            if (nodo.Izq == null && nodo.Der == null)
+                return 1;
+
+            // Recursivamente contar hojas en los subárboles izquierdo y derecho
+            return ContarHojas(nodo.Izq) + ContarHojas(nodo.Der);
+        }
+
+        public int ContarNodos(NodoBinario nodo)
+        {
+            if (nodo == null)
+                return 0;
+
+            // Contar el nodo actual y sumar los nodos de los subárboles izquierdo y derecho
+            return 1 + ContarNodos(nodo.Izq) + ContarNodos(nodo.Der);
+        }
     }
 }

@@ -209,21 +209,17 @@ namespace EDDemo.Estructuras_No_Lineales
                 return;
             }
 
-            // Inicializar una cola para manejar el recorrido por niveles
             Queue<NodoBinario> cola = new Queue<NodoBinario>();
-            cola.Enqueue(nodo); // Empezar con la raíz
+            cola.Enqueue(nodo);
 
-            strRecorrido = ""; // Limpiar la cadena de recorrido antes de comenzar
+            strRecorrido = ""; 
 
             while (cola.Count > 0)
             {
-                // Sacar el nodo al frente de la cola
                 NodoBinario actual = cola.Dequeue();
 
-                // Agregar el valor del nodo actual a la cadena de recorrido
                 strRecorrido += actual.Dato + ", ";
 
-                // Agregar los hijos izquierdo y derecho del nodo actual a la cola
                 if (actual.Izq != null)
                 {
                     cola.Enqueue(actual.Izq);
@@ -238,13 +234,11 @@ namespace EDDemo.Estructuras_No_Lineales
         public int ObtenerAltura(NodoBinario nodo)
         {
             if (nodo == null)
-                return -1; // Altura de un árbol vacío es -1
+                return -1; 
 
-            // Calcular la altura de los subárboles izquierdo y derecho
             int alturaIzquierda = ObtenerAltura(nodo.Izq);
             int alturaDerecha = ObtenerAltura(nodo.Der);
 
-            // La altura del nodo actual es 1 más la mayor altura de sus subárboles
             return 1 + Math.Max(alturaIzquierda, alturaDerecha);
         }
 
@@ -253,11 +247,9 @@ namespace EDDemo.Estructuras_No_Lineales
             if (nodo == null)
                 return 0;
 
-            // Si el nodo no tiene hijos, es una hoja
             if (nodo.Izq == null && nodo.Der == null)
                 return 1;
 
-            // Recursivamente contar hojas en los subárboles izquierdo y derecho
             return ContarHojas(nodo.Izq) + ContarHojas(nodo.Der);
         }
 
@@ -266,8 +258,57 @@ namespace EDDemo.Estructuras_No_Lineales
             if (nodo == null)
                 return 0;
 
-            // Contar el nodo actual y sumar los nodos de los subárboles izquierdo y derecho
             return 1 + ContarNodos(nodo.Izq) + ContarNodos(nodo.Der);
+        }
+
+        public bool EsCompleto(NodoBinario nodo)
+        {
+            if (nodo == null)
+                return true;
+
+            Queue<NodoBinario> cola = new Queue<NodoBinario>();
+            cola.Enqueue(nodo);
+
+            bool encontradoNodoNoCompleto = false;
+
+            while (cola.Count > 0)
+            {
+                NodoBinario actual = cola.Dequeue();
+
+                if (actual.Izq != null)
+                {
+                    if (encontradoNodoNoCompleto) 
+                        return false;
+                    cola.Enqueue(actual.Izq);
+                }
+                else encontradoNodoNoCompleto = true;
+
+                if (actual.Der != null)
+                {
+                    if (encontradoNodoNoCompleto) 
+                        return false;
+                    cola.Enqueue(actual.Der);
+                }
+
+                else encontradoNodoNoCompleto = true;
+   
+            }
+
+            return true;
+        }
+
+        public bool EsLleno(NodoBinario nodo)
+        {
+            if (nodo == null)
+                return true;
+
+            if (nodo.Izq == null && nodo.Der == null)
+                return true;
+
+            if (nodo.Izq != null && nodo.Der != null)
+                return EsLleno(nodo.Izq) && EsLleno(nodo.Der);
+
+            return false;
         }
     }
 }

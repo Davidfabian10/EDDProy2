@@ -309,5 +309,35 @@ namespace EDDemo.Estructuras_No_Lineales
                 MessageBox.Show("La cantidad total de nodos en el árbol es: " + cantidadNodos, "Cantidad de Nodos");
             }
         }
+
+        private void BtRevisionBinario_Click(object sender, EventArgs e)
+        {
+            if (miArbol.EstaVacio())
+            {
+                MessageBox.Show("Cree un árbol hacer su revisión", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                miRaiz = miArbol.RegresaRaiz();
+                bool esCompleto = miArbol.EsCompleto(miRaiz);
+                string mensaje = esCompleto ? "El árbol si es completo" : "El árbol no es completo";
+                MessageBox.Show(mensaje, "Verificación de Árbol Completo");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (miArbol.EstaVacio())
+            {
+                MessageBox.Show("Cree un árbol hacer su revisión", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                miRaiz = miArbol.RegresaRaiz();
+                bool esLleno = miArbol.EsLleno(miRaiz);
+                string mensaje = esLleno ? "El árbol si es lleno" : "El árbol no es lleno";
+                MessageBox.Show(mensaje, "Verificación de Árbol Lleno");
+            }
+        }
     } 
 }
